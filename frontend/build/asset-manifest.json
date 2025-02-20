@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "./static/css/main.ea752961.css",
-    "main.js": "./static/js/main.e2938d99.js",
-    "static/media/logoBig.png": "./static/media/logoBig.eb893b9cebc30693faeb.png",
+    "main.js": "./static/js/main.9f54ae9b.js",
+    "static/media/oss_logo.png": "./static/media/oss_logo.1c0a0c00389105372ad5.png",
     "static/media/AIT.svg": "./static/media/AIT.381aa6e3d2d4815036c3623f588810ca.svg",
     "index.html": "./index.html",
     "main.ea752961.css.map": "./static/css/main.ea752961.css.map",
-    "main.e2938d99.js.map": "./static/js/main.e2938d99.js.map"
+    "main.9f54ae9b.js.map": "./static/js/main.9f54ae9b.js.map"
   },
   "entrypoints": [
     "static/css/main.ea752961.css",
-    "static/js/main.e2938d99.js"
+    "static/js/main.9f54ae9b.js"
   ]
 }
