@@ -4,6 +4,8 @@ import logoait from "../assets/AIT.svg";
 import axios from "axios";
 import oss from "../assets/oss_logo.png";
 
+const API_URL = process.env.REACT_APP_API_URL || "";
+
 const NumberVerificationForm = () => {
   const [number, setNumber] = useState("");
   const [result, setResult] = useState(null);
@@ -23,7 +25,7 @@ const NumberVerificationForm = () => {
     }
 
     try {
-      const response = await axios.post("/api/verify-certificate", {
+      const response = await axios.post(`${API_URL}/api/verify-certificate`, {
         certificateNumber: number,
       });
 

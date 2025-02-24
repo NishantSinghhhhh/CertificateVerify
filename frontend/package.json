@@ -1,6 +1,6 @@
 {
-  "name": "frontend",
-  "version": "0.1.0",
+  "name": "certificate-verification-frontend",
+  "version": "1.0.0",
   "private": true,
   "homepage": ".",
   "proxy": "http://localhost:1245",
@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": " react-scripts build ",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

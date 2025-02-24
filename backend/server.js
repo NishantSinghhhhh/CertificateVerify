@@ -1,11 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 require("dotenv").config();
 const path = require("path");
 
 const app = express();
 const port = process.env.PORT || 5000;
 
+app.use(cors());
 app.use(express.json());
 
 // deployment
@@ -37,9 +39,8 @@ const certificateSchema = new mongoose.Schema({
   certificateId: String,
   holderName: String,
   category: String,
-  school: String,
+  InstituteName: String,
   issueDate: String,
-  status: String,
 });
 
 const Certificate = mongoose.model("Certificate", certificateSchema);

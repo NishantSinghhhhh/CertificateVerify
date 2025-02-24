@@ -25,3 +25,4 @@ coverage/
 .vscode/
 *.log
 .cache-loader/
+render.yaml
