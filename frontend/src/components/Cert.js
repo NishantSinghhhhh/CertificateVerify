@@ -117,7 +117,7 @@ const NumberVerificationForm = () => {
                       {result.certificateDetails.category}
                     </p>
 
-                    <p className="text-gray-600">School:</p>
+                    <p className="text-gray-600">College:</p>
                     <p className="col-span-2 font-medium">
                       {result.certificateDetails.school}
                     </p>
@@ -127,10 +127,10 @@ const NumberVerificationForm = () => {
                       {result.certificateDetails.issueDate}
                     </p>
 
-                    <p className="text-gray-600">Status:</p>
+                    {/* <p className="text-gray-600">Status:</p>
                     <p className="col-span-2 font-medium">
                       {result.certificateDetails.status}
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               )}
