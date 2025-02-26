@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import logo from "../assets/oss_logo.png";
+import logo from "../assets/colorful.png";
 import logoait from "../assets/AIT.svg";
 import axios from "axios";
-import oss from "../assets/innerve.png";
+import oss from "../assets/colorful.png";
 
 const API_URL = process.env.REACT_APP_API_URL || "";
 
@@ -42,7 +42,7 @@ const NumberVerificationForm = () => {
       {/* Header Section */}
       <div className="w-full h-[100px] p-10 flex fixed top-0 justify-between items-center bg-white shadow-md">
         <a href="https://aitoss.club/" target="_blank" rel="noreferrer">
-          <img src={logo} alt="Logo" className="h-12 w-12" />
+          <img src={logo} alt="Logo" className="h-12 " />
         </a>
         <img src={logoait} alt="Secondary Logo" className="h-20 w-20" />
       </div>
