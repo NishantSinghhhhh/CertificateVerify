@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "../assets/oss_logo.png";
 import logoait from "../assets/AIT.svg";
 import axios from "axios";
-import oss from "../assets/oss_logo.png";
+import oss from "../assets/innerve.png";
 
 const API_URL = process.env.REACT_APP_API_URL || "";
 
