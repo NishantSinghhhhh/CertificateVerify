@@ -41,7 +41,7 @@ const NumberVerificationForm = () => {
     <div className="min-h-screen h-full w-full flex flex-col items-center justify-center bg-gray-50 p-4 pt-[100px]">
       {/* Header Section */}
       <div className="w-full h-[100px] p-10 flex fixed top-0 justify-between items-center bg-white shadow-md">
-        <a href="https://oss.com" target="_blank" rel="noreferrer">
+        <a href="https://aitoss.club/" target="_blank" rel="noreferrer">
           <img src={logo} alt="Logo" className="h-12 w-12" />
         </a>
         <img src={logoait} alt="Secondary Logo" className="h-20 w-20" />
