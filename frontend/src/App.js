@@ -13,7 +13,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Navigate to="/verifyCertificate" />} />
+          <Route path="/" element={<Cert/>} />
           <Route path="/verifyCertificate" element={<Cert />} />
         </Routes>
       </div>
