@@ -141,7 +141,7 @@ const NumberVerificationForm = () => {
       {/* Footer Section */}
       <footer className="w-full mt-auto text-center py-4 text-gray-600 text-sm">
         &copy; {new Date().getFullYear()}{" "}
-        <a href="https://aitoss.club.com" target="_blank" rel="noreferrer">
+        <a href="https://aitoss.club/" target="_blank" rel="noreferrer">
           oss
         </a>{" "}
         All rights reserved.
