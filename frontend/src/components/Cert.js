@@ -117,9 +117,9 @@ const NumberVerificationForm = () => {
                       {result.certificateDetails.category}
                     </p>
 
-                    <p className="text-gray-600">College:</p>
+                    <p className="text-gray-600">InstituteName:</p>
                     <p className="col-span-2 font-medium">
-                      {result.certificateDetails.school}
+                      {result.certificateDetails.InstituteName}
                     </p>
 
                     <p className="text-gray-600">Issue Date:</p>
