@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import logo from "../assets/colorful.png";
+// import logo from "../assets/colorful.png";
 import logoait from "../assets/AIT.svg";
+import logooss from "../assets/oss_logo.png";
 import axios from "axios";
 import oss from "../assets/colorful.png";
 
@@ -42,7 +43,7 @@ const NumberVerificationForm = () => {
       {/* Header Section */}
       <div className="w-full h-[100px] p-10 flex fixed top-0 justify-between items-center bg-white shadow-md">
         <a href="https://aitoss.club/" target="_blank" rel="noreferrer">
-          <img src={logo} alt="Logo" className="h-12 " />
+          <img src={logooss} alt="Logo" className="h-12 " />
         </a>
         <img src={logoait} alt="Secondary Logo" className="h-20 w-20" />
       </div>
@@ -142,7 +143,7 @@ const NumberVerificationForm = () => {
       <footer className="w-full mt-auto text-center py-4 text-gray-600 text-sm">
         &copy; {new Date().getFullYear()}{" "}
         <a href="https://aitoss.club/" target="_blank" rel="noreferrer">
-          oss
+          Open Source Software Club, AIT
         </a>{" "}
         All rights reserved.
       </footer>
