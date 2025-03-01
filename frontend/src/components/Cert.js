@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-// import logo from "../assets/colorful.png";
+import axios from "axios";
+import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
+
 import logoait from "../assets/AIT.svg";
 import logooss from "../assets/oss_logo.png";
-import axios from "axios";
 import oss from "../assets/colorful.png";
+import certPdfPath from "../assets/certParticipation.pdf";
 
 const API_URL = process.env.REACT_APP_API_URL || "";
 
@@ -13,6 +15,71 @@ const NumberVerificationForm = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const handleDownload = async (certificateId, holderName) => {
+    try {
+      // 1) Fetch the base PDF
+      const existingPdfBytes = await fetch(certPdfPath).then((res) =>
+        res.arrayBuffer()
+      );
+  
+      // 2) Load the PDF
+      const pdfDoc = await PDFDocument.load(existingPdfBytes);
+  
+      // 3) Get page dimensions to help with positioning
+      const [firstPage] = pdfDoc.getPages();
+      const { width, height } = firstPage.getSize();
+      console.log(`PDF dimensions: ${width}x${height}`);
+  
+      // 4) Embed font
+      const helveticaFont = await pdfDoc.embedFont(StandardFonts.Helvetica);
+  
+      // 5) Draw text with adjusted coordinates
+      // Remember: PDF coordinates start from bottom-left corner
+      // So y=height places text at top, y=0 at bottom
+      firstPage.drawText(`${holderName}`, {
+        x: 94,
+        y: height - 120, // Adjust based on your PDF height
+        size: 12,
+        font: helveticaFont,
+        color: rgb(0, 0, 0),
+      });
+  
+      firstPage.drawText(`Verification ID : ${certificateId}`, {
+        x: 75,
+        y: height - 200, // Position below the name
+        size: 6,
+        font: helveticaFont,
+        color: rgb(0, 0, 0),
+      });
+  
+      firstPage.drawText("This is some random test text to check PDF writing.", {
+        x: 50,
+        y: height - 250, // Position below verification ID
+        size: 14,
+        font: helveticaFont,
+        color: rgb(0, 0, 0),
+      });
+  
+      // 6) Save and download as before
+      const pdfBytes = await pdfDoc.save();
+      const blob = new Blob([pdfBytes], { type: "application/pdf" });
+      const blobUrl = URL.createObjectURL(blob);
+  
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = `Certificate-${holderName}-Innerve-Nine.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(blobUrl);
+    } catch (err) {
+      console.error("Error customizing/downloading certificate:", err);
+    }
+  };
+
+  /**
+   * Handle form submit for verifying the certificate number
+   */
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -29,7 +96,6 @@ const NumberVerificationForm = () => {
       const response = await axios.post(`${API_URL}/api/verify-certificate`, {
         certificateNumber: number,
       });
-
       setResult(response.data);
     } catch (err) {
       setError("Unique Certificate Number is Invalid.");
@@ -43,7 +109,7 @@ const NumberVerificationForm = () => {
       {/* Header Section */}
       <div className="w-full h-[100px] p-10 flex fixed top-0 justify-between items-center bg-white shadow-md">
         <a href="https://aitoss.club/" target="_blank" rel="noreferrer">
-          <img src={logooss} alt="Logo" className="h-12 " />
+          <img src={logooss} alt="Logo" className="h-12" />
         </a>
         <img src={logoait} alt="Secondary Logo" className="h-20 w-20" />
       </div>
@@ -55,7 +121,7 @@ const NumberVerificationForm = () => {
           Certificate Verification
         </h1>
         <p className="text-gray-600 mb-6 text-center text-sm">
-          Enter the unique number printed on the your certificate.
+          Enter the unique number printed on your certificate.
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -118,7 +184,7 @@ const NumberVerificationForm = () => {
                       {result.certificateDetails.category}
                     </p>
 
-                    <p className="text-gray-600">InstituteName:</p>
+                    <p className="text-gray-600">Institute Name:</p>
                     <p className="col-span-2 font-medium">
                       {result.certificateDetails.InstituteName}
                     </p>
@@ -127,18 +193,28 @@ const NumberVerificationForm = () => {
                     <p className="col-span-2 font-medium">
                       {result.certificateDetails.issueDate}
                     </p>
-
-                    {/* <p className="text-gray-600">Status:</p>
-                    <p className="col-span-2 font-medium">
-                      {result.certificateDetails.status}
-                    </p> */}
                   </div>
+
+                  {/* Download Button (if the certificate is valid) */}
+                  <button
+                    type="button"
+                    onClick={() =>
+                      handleDownload(
+                        result.certificateDetails.certificateId,
+                        result.certificateDetails.holderName
+                      )
+                    }
+                    className="mt-4 w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                  >
+                    Download Certificate
+                  </button>
                 </div>
               )}
             </div>
           )}
         </form>
       </div>
+
       {/* Footer Section */}
       <footer className="w-full mt-auto text-center py-4 text-gray-600 text-sm">
         &copy; {new Date().getFullYear()}{" "}
