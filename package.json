@@ -9,5 +9,8 @@
     "build": "npm install --legacy-peer-deps && npm install --legacy-peer-deps --prefix frontend && npm install --legacy-peer-deps --prefix backend && npm run build --prefix frontend"
   },
   "author": "Srijan Tripathi",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "pdf-lib": "^1.17.1"
+  }
 }
