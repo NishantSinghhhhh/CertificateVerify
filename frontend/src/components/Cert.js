@@ -38,7 +38,7 @@ const NumberVerificationForm = () => {
       // So y=height places text at top, y=0 at bottom
       firstPage.drawText(`${holderName}`, {
         x: 94,
-        y: height - 120, // Adjust based on your PDF height
+        y: height - 127, // Adjust based on your PDF height
         size: 12,
         font: helveticaFont,
         color: rgb(0, 0, 0),
